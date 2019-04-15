@@ -1,28 +1,48 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+// import Login from "./Login/Login";
+import List from "./Lista/List";
+import Navi from "./Lista/Navi";
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+	constructor(props) {
+		super(props);
+  
+		this.state = {
+		  list: [],
+		  isLoading: false,
+		};
+	 }
+  
+	//  componentDidMount() {
+	// 	this.setState({ isLoading: true });
+  
+	// 	fetch("http://localhost:1337/places")
+	// 	  .then(response => response.json())
+	// 	  .then(data => this.setState({ list: data, isLoading: false }));
+	//  }
 
+	 componentDidMount() {
+		this.setState({ isLoading: true });
+  
+		fetch("http://localhost:1337/foods")
+		  .then(response => response.json())
+		  .then(data => this.setState({ list: data, isLoading: false }));
+	 }
+  
+	render() {
+		if(!this.state.isLoading){
+			console.log(this.state.list);
+		}
+		const name = "Food";
+		const list = this.state.list;
+		return (
+			<div className="App">
+				<Navi></Navi>
+				<List listName={name} list={list}></List>
+			</div>
+		);
+	}
+
+}
 export default App;
