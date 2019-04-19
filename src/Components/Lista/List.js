@@ -1,29 +1,30 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom"
 import Item from "./Items";
+import "./List.css"
 const Parse = require("parse");
 
 class List extends Component {
    constructor(props) {
       super(props);
-
       this.state = {
          list: [],
          isLoading: false,
-         local: false
+         isEmpty: false
       };
    }
    
    componentDidMount = () => {
-      this.setState({local:false});
+      this.setState({isEmpty:false});
       this.loadData();
   }
+
    componentDidUpdate = preState => {
       if(preState.match.params.id !== this.props.match.params.id){
          this.loadData();
       }
    }
-
+   // Load data control what need to be load
    loadData = () => {
       if(this.props.match.params.id==="food"){
          Parse.Cloud.run("getAllFoods").then((found)=>{
@@ -74,12 +75,12 @@ class List extends Component {
             this.setState({list:auxList});
          });
       } else {
-         this.setState({local:true});
+         this.setState({isEmpty:true});
       }
    }
    redirectFood(){
-      if(this.state.local){
-         this.setState({local:false});
+      if(this.state.isEmpty){
+         this.setState({isEmpty:false});
          return <Redirect to="/food"/>
       }
    }

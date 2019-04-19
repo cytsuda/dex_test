@@ -10,7 +10,6 @@ class CtrList extends Component {
       this.state =""
    }
    logOut = () =>{
-      console.log("Logout");
       Parse.User.logOut();
    }
    render(){
