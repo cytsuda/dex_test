@@ -2,7 +2,6 @@ import React from "react";
 
 const item = (props) =>{
 
-   console.log(props);
    let style = {
       backgroundImage: `url(${props.bg})`
    };

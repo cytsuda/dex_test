@@ -8,74 +8,6 @@ body{
   background-color:#F9F9F9;
 }
 
-.login{
-  width: 430px;
-  height: 746px;
-  display: flex;
-  flex-direction: column;
-  margin-left:180px;
-  margin-top: 49px;
-  padding: 50px 40px;
-  background-color: white;
-  box-shadow: 0 2px 7px 3px rgba(0, 0, 0, 0.1);
-  z-index: 99;
-}
-
-.login h1{
-  font-family: 'Righteous', cursive;
-  font-size: 36px;
-  letter-spacing: 14px;
-  color: #4A4A4A;
-  margin-bottom: 42px; 
-}
-
-.login-form{
-  display: flex;
-  flex-direction: column;
-}
-.login-form label{
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  line-height: 19px;
-  margin: 12px 0 10px;
-  color: #4A4A4A;
-}
-.login-form input{
-  height: 55px;
-  width: 350px;
-  border: 1px solid #4A4A4A;
-  padding-left: 20px;
-  font-size: 16px;
-  line-height: 19px;
-  letter-spacing: 1px;
-  color:#9B9B9B;
-}
-.login-form input::placeholder{
-  color:#9B9B9B;
-}
-.login-check{
-  display:flex;
-  align-items: center;
-  margin: 12px 0 39px;
-}
-.login-check input{
-  height: 15px;
-  width: 15px;
-  margin-right: 10px;
-}
-.login-check label{
-  font-weight: 300;
-}
-.login-problem{
-  text-decoration: none;
-  color: #4A4A4A;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 1px;
-  margin-bottom: 44px;
-}
 .btn {
   height: 55px;
   border:none;
@@ -84,10 +16,24 @@ body{
   font-size: 16px;
   letter-spacing: 1px;
   cursor:pointer;
+  transition: all .5s;
+  box-shadow: 0 0 2px rgba(0,0,0,.2);
+}
+.btn:hover{
+  letter-spacing: 2px;
+  transform: translate(2px, -2px);
+  box-shadow: -3px 3px 4px rgba(0,0,0,.2);
 }
 .btn-gradient{
-  background-image: linear-gradient(134.72deg, #AE23A9 0%, #DC4E1B 100%);
+  background-image: linear-gradient(134.72deg, #AE23A9 0%, #DC4E1B 50%,  #DC4E1B 50%, #AE23A9 100%);
+  background-size: 200%;
+  background-position: left 0;
   color: white;
+  
+}
+.btn-gradient:hover{
+  background-position: right 0;
+  
 }
 .btn-white{
   border: 1px solid #9B9B9B;
@@ -186,7 +132,7 @@ body{
 .nav-item:not(:first-of-type){
   margin-left: 20px;
 }
-.active .nav-link{
+.nav-link.active{
   font-weight: 600;
 }
 .active .nav-link:visited,.active .nav-link:link, .active .nav-link:active,
